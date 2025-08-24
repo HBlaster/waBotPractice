@@ -1,6 +1,6 @@
 const expres = require('express');
 const router = expres.Router();
-const whatsAppController = require("../controllers/whatsAppController");
+const whatsAppController = require("../controllers/whatsappControllers");
 
 router.get('/', whatsAppController.verifyToken);
 router.post('/', whatsAppController.receivedMessage);
