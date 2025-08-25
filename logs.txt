@@ -1,4 +1,17 @@
-Prueba 2
+this is a text message
+this is a text message
 Hola
-Prueba uno
-Prueba dos
+Text
+Image
+Hola, bot
+Prueba
+Text
+Test
+text
+image
+video
+audio
+document
+Text
+list
+Hola prueba
