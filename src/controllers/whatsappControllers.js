@@ -1,5 +1,6 @@
 const fs = require("fs");
 const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
+const whatsappService = require("../services/whatsappServe");
 
 const verifyToken = (req, res) => {
   try {
@@ -22,13 +23,39 @@ const receivedMessage = (req, res) => {
     var entry = req.body.entry[0];
     var changes = entry.changes[0];
     var value = changes.value;
-    var messages = value.messages;
-    myConsole.log("Received messages: ", messages);
+    var messageObjet = value.messages;
+    var messages = messageObjet[0];
+    var text = getTextUser(messages);
+    myConsole.log(text);
+    var phoneNumber = messages.from;
+    console.log(phoneNumber );
+    whatsappService.sendMessageWhatsApp("El usuario dijo: " + text, phoneNumber);
+
     res.send("EVENT_RECEIVED");
   } catch (error) {
     res.send("EVENT_RECEIVED");
   }
 };
+
+function getTextUser(message) {
+  var text = "";
+  var type = message.type;
+  if (type === "text") {
+    text = message.text["body"];
+  } else if (type == "interactive") {
+    var interactiveObject = message.interactive;
+    if (interactiveObject.type === "button_reply") {
+      text = interactiveObject.button_reply.title;
+    } else if (interactiveObject.type === "list_reply") {
+      text = interactiveObject.list_reply.title;
+    } else {
+      myConsole.log("Unsupported interactive message type");
+    }
+  } else {
+    myConsole.log("Unsupported message type");
+  }
+  return text;
+}
 
 module.exports = {
   verifyToken,

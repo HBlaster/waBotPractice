@@ -1,18 +1,4 @@
-Received messages:  [
-  {
-    from: '16315551181',
-    id: 'ABGGFlA5Fpa',
-    timestamp: '1504902988',
-    type: 'text',
-    text: { body: 'this is a text message' }
-  }
-]
-Received messages:  [
-  {
-    from: '5214792554808',
-    id: 'wamid.HBgNNTIxNDc5MjU1NDgwOBUCABIYIEJCODRCMDEyQ0JGQzgwQ0QyNzI1M0NDNThDMEZGN0JCAA==',
-    timestamp: '1756018308',
-    text: { body: 'Hola 123' },
-    type: 'text'
-  }
-]
+Prueba 2
+Hola
+Prueba uno
+Prueba dos
